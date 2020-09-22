@@ -1,0 +1,327 @@
+/*____Global____*/
+*{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    /*
+    *Color Variables*
+    *____Primary____*/
+--scissorsGradient:  hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
+--paperGradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
+--rockGradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+--lizardGradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
+--cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+
+    /*____Neutral____*/
+--darkText: hsl(229, 25%, 31%);
+--scoreText: hsl(229, 64%, 46%);
+--headerOutline: hsl(217, 16%, 45%);
+
+    /*____Background____*/
+--radialGradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+}
+body{
+    background-image: radial-gradient(circle farthest-side at 50% 10%, var(--radialGradient));
+    color: white;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+header{
+    width: 100%;
+    transform: scale(0.8);
+    margin: 50px auto;
+    border: 3px solid var(--headerOutline);
+    border-radius: 20px;
+    font-size: large;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+.headerText{
+    display: inline-block;
+    padding: 30px;
+}
+
+#scoreDiv{
+    float: right;
+    text-align: center;
+    padding: 12px;
+    margin: 10px;
+    width: 110px;
+    height: 80px;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+}
+#scoreDiv1{
+    font-size: xx-large;
+    padding: 5px;
+}
+@media only screen and (min-width : 626px) {
+    header{
+        width: 70%;
+        margin: 50px auto;
+        scale: 1;
+        font-size: xx-large;
+    }
+    #scoreDiv{
+        margin: 16px;
+        width: 150px;
+        height: 118px;
+    }
+    #scoreDiv1{
+        font-size: xxx-large;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width : 1126px) {
+    header{
+        width: 50%;
+    }
+}
+
+/*____the Game____*/
+.theGame{
+    display: block;
+    width: 50%;
+    margin: 60px auto;
+    position: relative;
+    transform: translateY(-50px) scale(0.8);
+    background-image: url(images/bg-triangle.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.paperWrapper, .scissorsWrapper, .rockWrapper{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.paperWrapper{
+    border: 20px solid hsl(230, 89%, 65%);
+    transform: translate(-70%, 30%);
+    box-shadow: inset 0px 12px 0px #b9bed2, 0 12px 0 hsl(230, 65%, 51%);
+}
+.scissorsWrapper{
+    border: 20px solid hsl(40, 84%, 53%);
+    transform: translate(70%,-70%);
+    box-shadow: inset 0px 12px 0px #b9bed2, 0 12px 0 hsl(40, 86%, 42%);
+}
+.rockWrapper{
+    border: 20px solid hsl(349, 77%, 60%);
+    transform: translate(0, -50%);
+    box-shadow: inset 0px 12px 0px #b9bed2, 0 12px 0 hsl(349, 85%, 51%);
+}
+@media only screen and (min-width : 626px) {
+    .theGame{
+        width: 75%;
+        transform:translateY(-50px) scale(1);
+    }
+}
+@media only screen and (min-width : 1126px) {
+    .theGame{
+        width: 50%;
+    }
+}
+
+
+.triangleWrapper{
+    text-align: center;
+    margin-top: 150px;
+}
+
+.rules{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: hsl(237, 49%, 15%);
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+.rules:hover{
+    box-shadow: 0 0 5px white;
+}
+@media only screen and (max-width : 626px) {
+    .rules{
+        bottom: 85px;
+        right:50%;
+        transform: translate(50%, 50%);
+    }
+}
+#close path{
+    fill: "#3B4262";
+}
+#close path:hover{
+    fill: red;
+}
+
+/*____Selection____*/
+.selectionDiv{
+    display: none;
+    margin: 140px auto;
+    width: 100%;
+    position: relative;
+    transform: translateY(-40px);
+}
+.selected{
+    display: flex;
+    margin: 0px auto;
+}
+#youPicked, #housePicked{
+    background-color: hsl(237, 49%, 15%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 10px;
+}
+#youPicked{
+    margin: 0 60px 0 auto;
+}
+#housePicked{
+    margin: 0 auto 0 60px;
+}
+.youPicked, .housePicked{
+    position: absolute;
+    left: 50%;
+}
+.youPicked{
+    transform: translate(-200%, 165px);
+}
+.housePicked{
+    transform: translate(40%, 165px);
+}
+@media only screen and (min-width:576px) {
+    #youPicked{
+        margin: 0 150px 0 auto;
+    }
+    #housePicked{
+        margin: 0 auto 0 150px;
+    } 
+    .youPicked{
+        transform: translate(-253%, 190px);
+        font-size: 1.1em;
+    }
+    .housePicked{
+        transform: translate(83%, 190px);
+        font-size: 1.1em;
+    }
+}
+#indicator{
+    margin: 100px auto;
+    text-align: center;
+}
+@media only screen and (min-width: 576px){
+    #indicator{
+        margin: 155px auto;    
+    }
+}
+#indicator p{
+    font-size: 5em;
+}
+.playAgainbtn{
+    background-color: white;
+    font-size: large;
+    border: none;
+    padding: 10px 60px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.playAgainbtn:hover{
+    color: red;
+}
+/*____Rules____*/
+.rulesWrapper{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+}
+.rulesHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 20px;
+}
+.rulesHeader p{
+    text-transform: uppercase;
+    font-size: 2.5em;
+    color: hsl(237, 49%, 15%);
+}
+.rulesExplaination{
+    max-width: 375px;
+    height: 40%;
+    width: 50%;
+    margin: 40% auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+}
+.rules-paperWrapper, .rules-scissorsWrapper, .rules-rockWrapper{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: hsl(220, 11%, 78%);
+    border: 15px solid hsl(216, 3%, 62%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rules-paperWrapper{
+    grid-column: 1;
+}
+.rules-scissorsWrapper{
+    grid-column: 3;
+}
+.rules-rockWrapper{
+    grid-column: 2 / 3;
+    align-self: end;
+}
+.rules-paper, .rules-rock, .rules-scissors{
+    fill: hsl(217, 16%, 45%);
+}
+@media only screen and (min-width: 576px){
+    .rulesWrapper{
+        max-width: 500px;
+        height: 50%;
+        width: 100%;
+        margin: auto;
+        position: absolute;
+        transform: translate(-50%,60%);
+        left: 50%;
+    }
+    .rulesExplaination{
+        height: 80%;
+        margin: 20px auto;
+    }
+}
+
+
+/*____Signature____*/
+.attribution { 
+    font-size: 14px; 
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}    
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}

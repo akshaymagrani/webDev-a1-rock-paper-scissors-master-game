@@ -58,8 +58,6 @@ var bunny = 0;
 
 function selectionPaper() {
     const userSelectedPaper = document.querySelector('.paperWrapper');
-    const userSelectedRock = document.querySelector('#clickedRock');
-    const userSelectedScissors = document.querySelector('#clickedScissors');
     const userSelected = document.querySelector('.selected');
     const selectionDiv = document.querySelector('.selectionDiv');
     const theGame = document.querySelector("#theGame");
@@ -166,14 +164,20 @@ function userChose() {
         
         if(case1 == win[0] | case1 == win[1] | case1 == win[2]){
             document.getElementById("winOrLose").innerHTML = "Win";
+            document.getElementById("winOrLose").style.color = "green";
+            document.getElementById("winOrLose").style.fontSize = "1.5em";
             bunny++;
             document.getElementById('scoreDiv1').innerHTML = bunny;
         }else{
             document.getElementById("winOrLose").innerHTML = "Lose";
+            document.getElementById("winOrLose").style.color = "red";
+            document.getElementById("winOrLose").style.fontSize = "1.5em";
         }
             
         if(uSelected == choices[houseChoose]){
             document.getElementById("winOrLose").innerHTML = "Draw";
+            document.getElementById("winOrLose").style.color = "yellow";
+            document.getElementById("winOrLose").style.fontSize = "1.5em";
         }
 
         if(choices[houseChoose] === 'paper'){
@@ -236,6 +240,8 @@ function userChose() {
             userSelected.appendChild(usersSelection);
 
         }
-        return choices[houseChoose];
 }
 
+function removeBtn() {
+    
+}

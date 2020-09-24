@@ -185,6 +185,11 @@ header{
     border-radius: 50%;
     padding: 10px;
 }
+#youPicked{
+    position: absolute;
+    left: 50%;
+    transform: translate(-150%, 0px) scale(0.8);
+}
     /*animation-name: vBorder;
     animation-duration: 1s;
     animation-iteration-count: infinite;
@@ -204,7 +209,9 @@ header{
     }
 }*/
 #housePicked{
-    margin: 0 auto 0 60px;
+    position: absolute;
+    left: 50%;
+    transform: translate(50%, 0px) scale(0.8);
 }
 
 .youPicked, .housePicked{
@@ -219,10 +226,16 @@ header{
 }
 @media only screen and (min-width:576px) {
     #youPicked{
-        margin: 0 150px 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translate(-210%, 0px) scale(1);
+        z-index: -1
     }
     #housePicked{
-        margin: 0 auto 0 150px;
+        position: absolute;
+        left: 50%;
+        transform: translate(100%, 0px) scale(1);
+        z-index: -1;
     } 
     .youPicked{
         transform: translate(-253%, 190px);
@@ -239,7 +252,7 @@ header{
 }
 @media only screen and (min-width: 576px){
     #indicator{
-        margin: 170px auto 0;    
+        margin: 270px auto 0;    
     }
 }
 #indicator p{

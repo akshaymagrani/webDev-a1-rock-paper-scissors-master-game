@@ -161,9 +161,6 @@ function userChose() {
         let case1 = uSelected + ' ' + choices[houseChoose];
         console.log(case1);
         
-        const stage1 = "0 0 0 45px hsl(214, 45%, 30%)";
-        const stage2 = "0 0 0 45px hsl(214, 45%, 30%),0 0 0 100px hsl(214, 50%, 35%)";
-        const stage3 = "0 0 0 45px hsl(214, 45%, 30%),0 0 0 100px hsl(214, 55%, 40%),0 0 0 150px hsl(214, 50%, 35%)";
         const youPicked = document.querySelector('#youPicked');
         const housePicked = document.querySelector("#housePicked");
         if(case1 == win[0] | case1 == win[1] | case1 == win[2]){
@@ -172,118 +169,26 @@ function userChose() {
             document.getElementById("winOrLose").style.fontSize = "1.5em";
             bunny++;
             document.getElementById('scoreDiv1').innerHTML = bunny;
-            function animatedBorder1() {
-                youPicked.style.boxShadow = stage1;
-                youPicked.style.opacity = "0.7";
-            }
-            function animatedBorder2() {
-                youPicked.style.boxShadow = stage2;
-                youPicked.style.opacity = "0.5";
-            }
-            function animatedBorder3() {
-                youPicked.style.boxShadow = stage3;
-                youPicked.style.opacity = "0.3";
-            }
-            //setInterval(animatedBorder3,1000);
-            //setInterval(animatedBorder2,3000);
-            //setInterval(animatedBorder1,9000);
-            const animate3 = setInterval(animatedBorder3,1000);
-            const animate2 = setInterval(animatedBorder2,2000);
-            const animate1 = setInterval(animatedBorder1,3000);
-            
-            
-
-            function stopAnimation() {
-                clearInterval(animate1);
-                clearInterval(animate2);
-                clearInterval(animate3);
-                youPicked.style.boxShadow = "none";
-                youPicked.style.opacity = "1";
-            }
-            setTimeout(stopAnimation, 10000);
+            youPicked.classList.add("shadow-pulse");                
         }else{
             document.getElementById("winOrLose").innerHTML = "Lose";
             document.getElementById("winOrLose").style.color = "red";
             document.getElementById("winOrLose").style.fontSize = "1.5em";
-            function animatedBorder4() {
-                housePicked.style.boxShadow = stage1;
-                housePicked.style.opacity = "0.7";
-            }
-            function animatedBorder5() {
-                housePicked.style.boxShadow = stage2;
-                housePicked.style.opacity = "0.5";
-            }
-            function animatedBorder6() {
-                housePicked.style.boxShadow = stage3;
-                housePicked.style.opacity = "0.3";
-            }
-            const animate4 = setInterval(animatedBorder6,1000);
-            const animate5 = setInterval(animatedBorder5,2000);
-            const animate6 = setInterval(animatedBorder4,3000);
-
-            function stopAnimation() {
-                clearInterval(animate4);
-                clearInterval(animate5);
-                clearInterval(animate6);
-                housePicked.style.boxShadow = "none";
-                housePicked.style.opacity = "1";
-            }
-            setTimeout(stopAnimation, 10000);
+            housePicked.classList.add("shadow-pulse");
         }
             
         if(uSelected == choices[houseChoose]){
             document.getElementById("winOrLose").innerHTML = "Draw";
             document.getElementById("winOrLose").style.color = "yellow";
             document.getElementById("winOrLose").style.fontSize = "1.5em";
-            function animatedBorder1() {
-                youPicked.style.boxShadow = stage1;
-                youPicked.style.opacity = "0.7";
-            }
-            function animatedBorder2() {
-                youPicked.style.boxShadow = stage2;
-                youPicked.style.opacity = "0.5";
-            }
-            function animatedBorder3() {
-                youPicked.style.boxShadow = stage3;
-                youPicked.style.opacity = "0.3";
-            }
-
-            function animatedBorder4() {
-                housePicked.style.boxShadow = stage1;
-                housePicked.style.opacity = "0.7";
-            }
-            function animatedBorder5() {
-                housePicked.style.boxShadow = stage2;
-                housePicked.style.opacity = "0.5";
-            }
-            function animatedBorder6() {
-                housePicked.style.boxShadow = stage3;
-                housePicked.style.opacity = "0.3";
-            }
-            
-            const animate1 = setInterval(animatedBorder1,1000);
-            const animate2 = setInterval(animatedBorder2,2000);
-            const animate3 = setInterval(animatedBorder3,3000);
-            const animate4 = setInterval(animatedBorder4,1000);
-            const animate5 = setInterval(animatedBorder5,2000);
-            const animate6 = setInterval(animatedBorder6,3000);
-            
-            function stopAnimation() {
-                clearInterval(animate1);
-                clearInterval(animate2);
-                clearInterval(animate3);
-                clearInterval(animate4);
-                clearInterval(animate5);
-                clearInterval(animate6);
-
-                youPicked.style.boxShadow = "none";
-                youPicked.style.opacity = "1";
-
-                housePicked.style.boxShadow = "none";
-                housePicked.style.opacity = "1";
-            }
-            setTimeout(stopAnimation, 10000);
+            youPicked.classList.add("shadow-pulse");
+            housePicked.classList.add("shadow-pulse");
         }
+
+        function removeClass() {
+            youPicked.classList.remove("shadow-pulse");
+        }
+        setTimeout(removeClass, 3000);
 
         if(choices[houseChoose] === 'paper'){
             const userSelectedPaper = document.querySelector('.paperWrapper');

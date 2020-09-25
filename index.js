@@ -187,6 +187,7 @@ function userChose() {
 
         function removeClass() {
             youPicked.classList.remove("shadow-pulse");
+            housePicked.classList.remove("shadow-pulse");
         }
         setTimeout(removeClass, 3000);
 

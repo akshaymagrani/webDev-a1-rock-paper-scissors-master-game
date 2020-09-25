@@ -52,6 +52,13 @@ function theGame() {
     userSelectedRock.style.position = "static";
     userSelectedRock.style.left = "0";
     userSelectedRock.style.transform = "translate(0%, -50%)";
+
+    const removeAnimate = document.getElementsByClassName("shadow-pulse");
+    
+    console.log(removeAnimate);
+    
+    while(removeAnimate[0])
+        removeAnimate[0].classList.remove("shadow-pulse");
 }
 
 var bunny = 0;
@@ -161,8 +168,8 @@ function userChose() {
         let case1 = uSelected + ' ' + choices[houseChoose];
         console.log(case1);
         
-        const youPicked = document.querySelector('#youPicked');
-        const housePicked = document.querySelector("#housePicked");
+        const youPicked = document.getElementById('youPicked');
+        const housePicked = document.getElementById('housePicked');
         if(case1 == win[0] | case1 == win[1] | case1 == win[2]){
             document.getElementById("winOrLose").innerHTML = "Win";
             document.getElementById("winOrLose").style.color = "green";
@@ -184,12 +191,6 @@ function userChose() {
             youPicked.classList.add("shadow-pulse");
             housePicked.classList.add("shadow-pulse");
         }
-
-        function removeClass() {
-            youPicked.classList.remove("shadow-pulse");
-            housePicked.classList.remove("shadow-pulse");
-        }
-        setTimeout(removeClass, 3000);
 
         if(choices[houseChoose] === 'paper'){
             const userSelectedPaper = document.querySelector('.paperWrapper');
